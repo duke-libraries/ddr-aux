@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429200817) do
+ActiveRecord::Schema.define(version: 20150430193332) do
 
   create_table "admin_entities", force: true do |t|
     t.string   "slug"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150429200817) do
     t.string   "ask"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "short_name"
   end
 
 end
