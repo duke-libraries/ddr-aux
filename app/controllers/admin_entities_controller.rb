@@ -1,10 +1,13 @@
 class AdminEntitiesController < ApplicationController
 
-  def show
-    @admin_entity = AdminEntity.find_by(slug: params.require(:slug))
-    respond_to do |format|
-      format.json { render json: @admin_entity }
-    end
+  respond_to :json
+
+  def index
+    respond_with AdminEntity.all
+  end
+
+  def slug
+    respond_with AdminEntity.find_by(slug: params.require(:slug))
   end
 
 end

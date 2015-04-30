@@ -1,0 +1,21 @@
+development:
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/development.sqlite3
+
+test:
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/test.sqlite3
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV["DDR_AUX_DATABASE"] %>
+  pool: 5
+  username: <%= ENV["DDR_AUX_USER"] %>
+  password: <%= ENV["DDR_AUX_PASSWORD"] %>
+  host: 127.0.0.1
+  port: 3306
