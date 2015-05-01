@@ -11,11 +11,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
+  adapter: <%= ENV["DATABASE_ADAPTER"] || "mysql2" %>
   encoding: utf8
-  database: <%= ENV["DDR_AUX_DATABASE"] %>
-  pool: 5
-  username: <%= ENV["DDR_AUX_USER"] %>
-  password: <%= ENV["DDR_AUX_PASSWORD"] %>
-  host: 127.0.0.1
-  port: 3306
+  database: <%= ENV["DATABASE_NAME"] %>
+  pool: <%= ENV["DATABASE_POOL"] || 5 %>
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  host: <%= ENV["DATABASE_HOST"] || "127.0.0.1" %>
+  port: <%= ENV["DATABASE_PORT"] || 3306 %>

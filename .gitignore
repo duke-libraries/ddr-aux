@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+/config/local_env.yml
+/config/environments/production.rb
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -14,3 +17,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/public/assets
