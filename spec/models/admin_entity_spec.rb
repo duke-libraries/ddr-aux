@@ -1,5 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe AdminEntity, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { described_class.new(slug: "foo", name: "Foo-tastic", short_name: "Foo") }
+  its(:to_param) { should eq("foo") }
 end
