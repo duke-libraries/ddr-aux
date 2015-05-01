@@ -7,6 +7,8 @@ gem 'sqlite3', group: [:development, :test]
 
 gem 'rails_admin'
 
+gem 'therubyracer', require: 'v8'
+
 group :test do
   gem 'rspec-rails'
   gem 'rspec-its'
