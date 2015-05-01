@@ -16,6 +16,14 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  config.excluded_models << "User"
+
+  config.navigation_static_links = {
+    'DDR Staff UI' => 'https://ddr.lib.duke.edu',
+    'DDR Public UI' => 'https://repository.lib.duke.edu',
+    'EZID' => 'https://ezid.cdlib.org',
+  }
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
