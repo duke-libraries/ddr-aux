@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe AdminEntitiesController, type: :controller do
+  let(:user) { FactoryGirl.create(:user) }
+  before { sign_in user }
   describe "#slug" do
     let!(:foo) { AdminEntity.new(slug: "foo", name: "Foo") }
     before { allow(AdminEntity).to receive(:find_by).with({slug: "foo"}) { foo } }
