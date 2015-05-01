@@ -6,4 +6,8 @@ class AdminEntity < ActiveRecord::Base
 
   include RailsAdmin::AdminEntityConfig
 
+  def to_param
+    slug
+  end
+
 end

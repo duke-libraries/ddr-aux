@@ -5,9 +5,12 @@ gem 'rails', '~> 4.1.10'
 gem 'mysql2', group: :production
 gem 'sqlite3', group: [:development, :test]
 
-gem 'rspec-rails', group: :test
-
 gem 'rails_admin'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'rspec-its'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

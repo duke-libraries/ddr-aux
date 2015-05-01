@@ -2,9 +2,10 @@ require "rails_helper"
 
 RSpec.describe AdminEntitiesController, type: :controller do
   describe "#slug" do
-    before { allow(AdminEntity).to receive(:find_by).with({slug: "foo"}) { AdminEntity.new(slug: "foo", name: "Foo") } }
+    let!(:foo) { AdminEntity.new(slug: "foo", name: "Foo") }
+    before { allow(AdminEntity).to receive(:find_by).with({slug: "foo"}) { foo } }
     it "should return a JSON hash of attributes for the admin entity" do
-      get :slug, slug: "foo", format: "json"
+      get :show, id: foo, format: "json"
       entity = JSON.load(response.body)
       expect(entity["slug"]).to eq("foo")
       expect(entity["name"]).to eq("Foo")
