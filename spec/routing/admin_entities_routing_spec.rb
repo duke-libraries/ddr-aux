@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "AdminEntity routing", type: :routing do
-  it "should have a slug route" do
-    @route = {controller: "admin_entities", action: "slug", slug: "foobar", format: "json"}
+  it "should have a show route" do
+    @route = {controller: "admin_entities", action: "show", id: "foobar", format: "json"}
     expect(get: '/admin_entities/foobar.json').to route_to(@route)
     expect(get: '/admin_entities/foobar').to route_to(@route)
   end
