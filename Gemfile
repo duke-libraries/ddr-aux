@@ -8,6 +8,7 @@ gem 'sqlite3', group: [:development, :test]
 gem 'rails_admin'
 gem 'devise'
 gem 'omniauth-shibboleth'
+gem 'cancancan'
 
 gem 'therubyracer', require: 'v8'
 
