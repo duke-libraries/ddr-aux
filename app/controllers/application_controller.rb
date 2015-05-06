@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 
   class_attribute :ability_class
-
   self.ability_class = Ability
 
   # Prevent CSRF attacks by raising an exception.
@@ -13,11 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    @current_ability ||= ability_class.new(user_context)
-  end
-
-  def user_context
-    @user_context ||= UserContext.new(current_user, request)
+    @current_ability ||= ability_class.new(current_user)
   end
 
 end
