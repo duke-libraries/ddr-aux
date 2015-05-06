@@ -1,8 +1,9 @@
 module Api
-  class Ability < ::Ability
+  class Ability < ::BaseAbility
 
-    # See config/initializers/abilities.rb
-    self.permissions = []
+    def post_initialize
+      can [:show, :index], :all
+    end
 
   end
 end
