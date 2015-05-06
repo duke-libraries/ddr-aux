@@ -1,12 +1,11 @@
-require 'ddr_aux/api'
-
 module Api
   class BaseController < ApplicationController
 
     respond_to :json
-    before_action :set_request_format
 
     self.ability_class = Api::Ability
+
+    before_action :set_request_format
 
     protect_from_forgery with: :null_session
 
