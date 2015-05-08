@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506034114) do
+ActiveRecord::Schema.define(version: 20150506211132) do
 
   create_table "admin_entities", force: true do |t|
     t.string   "slug"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20150506034114) do
     t.string   "phone"
     t.string   "email"
     t.string   "url"
-    t.string   "ask"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "short_name"
