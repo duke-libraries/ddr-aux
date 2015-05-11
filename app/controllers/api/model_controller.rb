@@ -64,7 +64,23 @@ module Api
     end
 
     def iri_for(obj)
-      url_for id: obj, controller: controller_name, action: :show
+      url_for iri_for_options(obj)
+    end
+
+    def iri_for_options(obj)
+      { id: obj, controller: controller_name, action: :show }.tap do |opts|
+        if base_iri
+          opts[:protocol] = base_iri.scheme
+          opts[:host] = base_iri.host
+          opts[:port] = base_iri.port if base_iri.port != base_iri.default_port
+        end
+      end
+    end
+
+    def base_iri
+      @base_uri ||= if Rails.configuration.ddr_aux.base_iri
+                      URI.parse(Rails.configuration.ddr_aux.base_iri)
+                    end
     end
 
     def context_for(obj)

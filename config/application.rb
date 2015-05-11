@@ -14,6 +14,10 @@ module DdrAux
 
     # config.autoload_paths += %W(#{config.root}/app/contexts)
 
+    config.ddr_aux = ActiveSupport::OrderedOptions.new
+    # Base IRI for JSON-LD context -- e.g., http://example.com
+    config.ddr_aux.base_iri = ENV["DDR_AUX_BASE_IRI"]
+
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
