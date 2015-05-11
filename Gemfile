@@ -10,6 +10,8 @@ gem 'devise'
 gem 'omniauth-shibboleth'
 gem 'cancancan', '~> 1.10.1'
 gem 'paper_trail', '~> 3.0.8'
+gem 'pragmatic_context', '~> 0.1.6'
+gem 'linkeddata', '~> 1.1.11'
 
 gem 'therubyracer', require: 'v8'
 
