@@ -2,28 +2,24 @@ module Api
   class BaseController < ApplicationController
 
     respond_to :json
+    protect_from_forgery with: :null_session
 
     self.ability_class = Api::Ability
 
-    before_action :set_request_format
-
-    protect_from_forgery with: :null_session
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from CanCan::AccessDenied, with: :forbidden
 
-    protected
-
-    def set_request_format
-      request.format = :json
-    end
+    private
 
     def forbidden
-      respond_with({message: "Access to the requested resource is denied."}, status: 403)
+      error 403
     end
 
     def not_found
-      respond_with({message: "The requested resource was not found."}, status: 404)
+      error 404
+    end
+
+    def error(status)
+      render nothing: true, status: status
     end
 
   end

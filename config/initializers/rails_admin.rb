@@ -55,7 +55,6 @@ RailsAdmin.config do |config|
       field :phone
       field :email
       field :url
-      field :ask
     end
   end # AdminEntity
 

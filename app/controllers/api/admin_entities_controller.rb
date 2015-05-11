@@ -1,16 +1,8 @@
 module Api
-  class AdminEntitiesController < BaseController
+  class AdminEntitiesController < ModelController
 
-    load_resource find_by: :slug
-    authorize_resource
-
-    def index
-      respond_with @admin_entities
-    end
-
-    def show
-      respond_with @admin_entity
-    end
+    self.find_by_attribute = :slug
+    self.context = AdminEntityContext
 
   end
 end

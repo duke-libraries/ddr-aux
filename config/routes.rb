@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "rails_admin/main#dashboard"
+  root to: 'rails_admin/main#dashboard'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
@@ -11,9 +11,10 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/manage', as: 'rails_admin'
 
-  namespace :api do
-    root to: 'services#index'
-    resources :admin_entities, only: [:index, :show]
+  scope module: 'api' do
+    constraints format: 'json' do
+      resources :admin_entities, only: [:index, :show]
+    end
   end
 
 end
