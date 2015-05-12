@@ -11,15 +11,19 @@ gem 'omniauth-shibboleth'
 gem 'cancancan', '~> 1.10.1'
 gem 'paper_trail', '~> 3.0.8'
 gem 'pragmatic_context', '~> 0.1.6'
-gem 'linkeddata', '~> 1.1.11'
+gem 'rdf-vocab', '~> 0.8'
 
 gem 'therubyracer', require: 'v8'
+
+gem 'active-triples', '~> 0.2.3', group: :development
 
 group :test do
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'linkeddata', '~> 1.1.11'
 end
 
 gem 'bootstrap-sass'
