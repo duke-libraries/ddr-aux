@@ -7,7 +7,7 @@ module Api
     let!(:user) { FactoryGirl.build(:user) }
     subject { described_class.new(user) }
 
-    models = [ AdminEntity ]
+    models = [ Organization ]
     models.each do |model|
       it { is_expected.to be_able_to(:show, model.new) }
       it { is_expected.to be_able_to(:index, model) }

@@ -144,9 +144,6 @@ GEM
     omniauth-shibboleth (1.2.0)
       omniauth (>= 1.0.0)
     orm_adapter (0.5.0)
-    paper_trail (3.0.8)
-      activerecord (>= 3.0, < 5.0)
-      activesupport (>= 3.0, < 5.0)
     pragmatic_context (0.1.6)
       activemodel
       activesupport
@@ -323,7 +320,6 @@ DEPENDENCIES
   linkeddata (~> 1.1.11)
   mysql2
   omniauth-shibboleth
-  paper_trail (~> 3.0.8)
   pragmatic_context (~> 0.1.6)
   rails (~> 4.1.10)
   rails_admin
@@ -335,3 +331,6 @@ DEPENDENCIES
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
+
+BUNDLED WITH
+   1.10.2

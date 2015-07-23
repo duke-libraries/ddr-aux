@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   scope module: 'api' do
     constraints format: 'json' do
-      resources :admin_entities, only: [:index, :show]
+      resources :organizations, only: [:index, :show]
     end
   end
 
