@@ -13,4 +13,10 @@ RSpec.describe "API routing", type: :routing do
     end
   end
 
+  describe "services" do
+    it "should have a 'contacts' route" do
+      expect(get: '/contacts').to route_to(controller: "api/services", action: "contacts")
+    end
+  end
+
 end

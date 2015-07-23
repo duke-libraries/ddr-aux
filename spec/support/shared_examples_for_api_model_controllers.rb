@@ -7,13 +7,19 @@ RSpec.shared_examples "an API model controller" do
 
   describe "#show" do
     describe "authorized" do
+      let(:obj) { FactoryGirl.create(factory_name) }
       before do
-        obj = FactoryGirl.create(factory_name)
         controller.current_ability.can :show, resource_class
         get :show, id: obj, format: "jsonld"
       end
       it_behaves_like "an API successful operation"
       it_behaves_like "a JSON-LD API operation"
+      it "should have a JSON-LD context" do
+        expect(JSON.parse(response.body)["@context"]).to be_present
+      end
+      it "should have a JSON-LD identifier" do
+        expect(JSON.parse(response.body)["@id"]).to be_present
+      end
     end
     describe "not found" do
       before do
