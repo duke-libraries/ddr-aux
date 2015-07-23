@@ -9,13 +9,12 @@ gem 'rails_admin'
 gem 'devise'
 gem 'omniauth-shibboleth'
 gem 'cancancan', '~> 1.10.1'
-gem 'paper_trail', '~> 3.0.8'
 gem 'pragmatic_context', '~> 0.1.6'
 gem 'rdf-vocab', '~> 0.8'
 
 gem 'therubyracer', require: 'v8'
 
-gem 'active-triples', '~> 0.2.3', group: :development
+gem 'active-triples', '~> 0.2.3', group: [:development, :test]
 
 group :test do
   gem 'rspec-rails'
