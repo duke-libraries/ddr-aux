@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   scope module: 'api' do
     constraints format: 'json' do
+      get 'contacts', to: 'services#contacts'
       resources :organizations, only: [:index, :show]
     end
   end

@@ -10,6 +10,18 @@ module Api
 
     private
 
+    def set_jsonld_content_type
+      response.content_type = Mime::JSONLD
+    end
+
+    def jsonld_for_collection(collection)
+      collection.map { |resource| jsonld_for(resource) }
+    end
+
+    def jsonld_for(resource)
+      resource.as_jsonld.merge("@id"=>url_for(resource))
+    end
+
     def forbidden
       error 403
     end
