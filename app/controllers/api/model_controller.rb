@@ -5,9 +5,6 @@ module Api
     class_attribute :find_by_attribute
     self.find_by_attribute = :id
 
-    # Subclasses must set, or override `context_for(obj)`
-    class_attribute :context
-
     # before filters
     before_action :find_resource, only: :show
     load_resource only: :index
@@ -21,7 +18,7 @@ module Api
 
     # GET /api/{plural_resource_name}
     def index
-      render json: resources.map { |r| jsonld_for(r) }
+      render json: jsonld_for_collection(resources)
     end
 
     # GET /api/{plural_resource_name}/{id}
@@ -57,22 +54,6 @@ module Api
 
     def resources
       @resources ||= instance_variable_get("@#{resource_name.pluralize}")
-    end
-
-    def set_jsonld_content_type
-      response.content_type = Mime::JSONLD
-    end
-
-    def iri_for(obj)
-      url_for id: obj, controller: controller_name, action: :show
-    end
-
-    def context_for(obj)
-      context.new(obj)
-    end
-
-    def jsonld_for(obj)
-      context_for(obj).as_jsonld.merge("@id" => iri_for(obj))
     end
 
   end

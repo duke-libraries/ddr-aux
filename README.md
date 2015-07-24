@@ -6,7 +6,7 @@ Auxiliary web services for the Duke Digital Repository
 
 All requests via `GET`
 
-All response have content type `application/json`.
+All responses have content type `application/json`.
 
 Example
 
