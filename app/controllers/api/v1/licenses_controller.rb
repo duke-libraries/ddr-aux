@@ -2,7 +2,7 @@ module Api::V1
   class LicensesController < ModelController
 
     def find_resource
-      resource_class.find_by(code: params[:code])
+      resource_class.find_by!(code: params[:code])
     end
 
     def select_resources
