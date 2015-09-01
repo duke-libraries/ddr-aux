@@ -1,29 +1,17 @@
-module Api
+module Api::V1
   # @abstract
   class ModelController < BaseController
 
-    class_attribute :find_by_attribute
-    self.find_by_attribute = :id
-
-    # before filters
-    before_action :find_resource, only: :show
-    load_resource only: :index
-    authorize_resource
-    before_action :set_jsonld_content_type
-
-    # after filters
-    check_authorization
-
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    load_resource
 
     # GET /api/{plural_resource_name}
     def index
-      render json: jsonld_for_collection(resources)
+      render json: resources
     end
 
     # GET /api/{plural_resource_name}/{id}
     def show
-      render json: jsonld_for(resource)
+      render json: resource
     end
 
     protected

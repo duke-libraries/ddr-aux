@@ -1,3 +1,5 @@
+require "ddr_aux/api_constraints"
+
 Rails.application.routes.draw do
 
   root to: 'rails_admin/main#dashboard'
@@ -11,10 +13,9 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/manage', as: 'rails_admin'
 
-  scope module: 'api' do
-    constraints format: 'json' do
-      get 'contacts', to: 'services#contacts'
-      resources :organizations, only: [:index, :show]
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: DdrAux::ApiConstraints.new(version: 1, default: true) do
+      resources :organizations, only: [:show, :index]
     end
   end
 
