@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+License.create(
+  code: "cc-by-40",
+  title: "Creative Commons Attribution 4.0 International",
+  url: "https://creativecommons.org/licenses/by/4.0/"
+)
+License.create(
+  code: "cc-by-nc-40",
+  title: "Creative Commons Attribution-NonCommercial 4.0 International",
+  url: "https://creativecommons.org/licenses/by-nc/4.0/"
+)
+License.create(
+  code: "cc-by-nc-nd-40",
+  title: "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International",
+  url: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+)

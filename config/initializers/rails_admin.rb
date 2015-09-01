@@ -42,6 +42,14 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model "License" do
+    list do
+      field :id
+      field :code
+      field :title
+    end
+  end
+
   config.model "User" do
     visible do
       bindings[:controller].current_user.admin?
