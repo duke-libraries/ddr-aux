@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714132905) do
+ActiveRecord::Schema.define(version: 20150901144422) do
+
+  create_table "licenses", force: true do |t|
+    t.string "code"
+    t.string "title"
+    t.string "url"
+    t.text   "terms", limit: 65535
+  end
 
   create_table "organizations", force: true do |t|
     t.string   "name"

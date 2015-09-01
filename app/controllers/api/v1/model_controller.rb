@@ -2,7 +2,9 @@ module Api::V1
   # @abstract
   class ModelController < BaseController
 
-    load_resource
+    attr_reader :resource, :resources
+    before_action :index_resources, only: :index
+    before_action :show_resource, only: :show
 
     # GET /api/{plural_resource_name}
     def index
@@ -31,17 +33,20 @@ module Api::V1
 
     private
 
+    def show_resource
+      @resource = find_resource
+    end
+
     def find_resource
-      result = resource_class.find_by!(self.class.find_by_attribute => params[:id])
-      instance_variable_set("@#{resource_name}", result)
+      resource_class.find(params[:id])
     end
 
-    def resource
-      @resource ||= instance_variable_get("@#{resource_name}")
+    def index_resources
+      @resources = select_resources
     end
 
-    def resources
-      @resources ||= instance_variable_get("@#{resource_name.pluralize}")
+    def select_resources
+      resource_class.all
     end
 
   end
