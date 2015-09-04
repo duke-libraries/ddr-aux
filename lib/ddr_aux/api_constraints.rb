@@ -10,12 +10,12 @@ module DdrAux
 
 
     def matches?(request)
-      default || has_accept_version_header?
+      default || has_accept_version_header?(request)
     end
 
     private
 
-    def has_accept_version_header?
+    def has_accept_version_header?(request)
       request.headers["Accept"].include?("application/vnd.ddr-aux.v#{version}")
     end
 

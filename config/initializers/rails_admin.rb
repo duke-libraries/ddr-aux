@@ -34,14 +34,6 @@ RailsAdmin.config do |config|
 
   ## Model config
 
-  config.model "Organization" do
-    list do
-      field :id
-      field :name
-      field :short_name
-    end
-  end
-
   config.model "License" do
     list do
       field :id

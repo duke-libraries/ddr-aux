@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: DdrAux::ApiConstraints.new(version: 1, default: true) do
-      resources :organizations, only: [:show, :index]
       resources :licenses, only: :index
       get 'licenses/*code', to: 'licenses#show', format: false
     end
