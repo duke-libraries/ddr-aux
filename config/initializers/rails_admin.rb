@@ -32,20 +32,4 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  ## Model config
-
-  config.model "License" do
-    list do
-      field :id
-      field :code
-      field :title
-    end
-  end
-
-  config.model "User" do
-    visible do
-      bindings[:controller].current_user.admin?
-    end
-  end
-
 end
