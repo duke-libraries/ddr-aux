@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
     user
   end
 
+  rails_admin do
+    visible do
+      bindings[:controller].current_user.admin?
+    end
+  end
+
 end
