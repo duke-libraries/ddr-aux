@@ -15,9 +15,7 @@ gem 'therubyracer', require: 'v8'
 group :test do
   gem 'rspec-rails'
   gem 'rspec-its'
-  gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'capybara'
 end
 
 gem 'bootstrap-sass'

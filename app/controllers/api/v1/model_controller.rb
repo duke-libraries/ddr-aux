@@ -5,6 +5,7 @@ module Api::V1
     attr_reader :resource, :resources
     before_action :index_resources, only: :index
     before_action :show_resource, only: :show
+    before_action :find_resource, only: :find
 
     # GET /api/{plural_resource_name}
     def index
@@ -13,6 +14,11 @@ module Api::V1
 
     # GET /api/{plural_resource_name}/{id}
     def show
+      render json: resource
+    end
+
+    # GET /api/{plural_resource_name}/find?{params}
+    def find
       render json: resource
     end
 
@@ -34,11 +40,11 @@ module Api::V1
     private
 
     def show_resource
-      @resource = find_resource
+      @resource = resource_class.find(show_param)
     end
 
     def find_resource
-      resource_class.find(params[:id])
+      @resource = resource_class.find_by!(find_params)
     end
 
     def index_resources
@@ -47,6 +53,14 @@ module Api::V1
 
     def select_resources
       resource_class.all
+    end
+
+    def show_param
+      params.require(:id)
+    end
+
+    def find_params
+      raise NotImplementedError, "API model controllers must implement private #find_params method."
     end
 
   end

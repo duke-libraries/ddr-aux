@@ -53,5 +53,10 @@ RSpec.configure do |config|
 
   config.include Devise::TestHelpers, type: :controller
 
-  config.before(:suite) { DatabaseCleaner.clean }
+  config.before(:suite) do
+    DatabaseCleaner.clean
+    Dir.chdir(Rails.root) do
+      system({"RAILS_ENV"=>"test"}, "rake db:seed")
+    end
+  end
 end
