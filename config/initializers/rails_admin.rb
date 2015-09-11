@@ -17,7 +17,7 @@ RailsAdmin.config do |config|
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   config.actions do
-    dashboard                     # mandatory
+    dashboard
     index                         # mandatory
     new
     export
@@ -30,22 +30,6 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
-  end
-
-  ## Model config
-
-  config.model "Organization" do
-    list do
-      field :id
-      field :name
-      field :short_name
-    end
-  end
-
-  config.model "User" do
-    visible do
-      bindings[:controller].current_user.admin?
-    end
   end
 
 end
