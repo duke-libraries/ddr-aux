@@ -1,12 +1,12 @@
 module Api::V1
   class LicensesController < ModelController
 
-    def find_resource
-      resource_class.find_by!(code: params[:code])
+    def select_resources
+      resource_class.select(:id, :title, :url)
     end
 
-    def select_resources
-      resource_class.select(:id, :code, :title, :url)
+    def find_params
+      params.permit(:url, :title)
     end
 
   end
