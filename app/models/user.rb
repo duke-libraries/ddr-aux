@@ -13,6 +13,13 @@ class User < ActiveRecord::Base
   end
 
   rails_admin do
+    list do
+      field :username
+      field :email
+      field :first_name
+      field :last_name
+      field :admin
+    end
     visible do
       bindings[:controller].current_user.admin?
     end

@@ -3,3 +3,4 @@ en:
     help:
       license:
         url: "%{help} Not editable after creation."
+        terms: "%{help} May include HTML."
