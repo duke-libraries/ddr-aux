@@ -8,7 +8,14 @@ class License < ActiveRecord::Base
       field :title
       field :url
     end
-    edit do
+    show do
+      configure :terms do
+        formatted_value do
+          value ? value.html_safe : value
+        end
+      end
+    end
+    update do
       configure :url do
         read_only true
       end
