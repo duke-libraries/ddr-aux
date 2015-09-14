@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       resources :licenses, only: [:index, :show] do
         get 'find', on: :collection
       end
+      resources :admin_sets, only: [:index, :show] do
+        get 'find', on: :collection
+      end
     end
   end
 
