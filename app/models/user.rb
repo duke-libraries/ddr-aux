@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  validates :username, presence: true, uniqueness: true
+
   devise :database_authenticatable, :omniauthable, omniauth_providers: [:shibboleth]
 
   def self.from_omniauth(auth)

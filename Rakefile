@@ -28,3 +28,14 @@ task :tag do
     puts "ERROR: #{stderr}"
   end
 end
+
+desc "Create admin user"
+task :create_admin => :environment do
+  if User.exists?(username: "admin")
+    puts "User 'admin' already exists."
+  else
+    password = Devise.friendly_token
+    User.create!(username: "admin", admin: true, password: password)
+    puts "Created user 'admin' with password '#{password}'."
+  end
+end
