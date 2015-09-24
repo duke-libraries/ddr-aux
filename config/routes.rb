@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: DdrAux::ApiConstraints.new(version: 1, default: true) do
+      resources :contacts, only: [:index, :show] do
+        get 'find', on: :collection
+      end
       resources :licenses, only: [:index, :show] do
         get 'find', on: :collection
       end
