@@ -26,3 +26,92 @@ License.create(
   title: "Creative Commons 1.0 Universal (CC0 Public Domain Dedication)",
   url: "https://creativecommons.org/publicdomain/zero/1.0/"
 )
+
+#
+# Contacts
+#
+Contact.create(
+  slug: "rubenstein",
+  name: "David M. Rubenstein Rare Book & Manuscript Library",
+  short_name: "Rubenstein Library",
+  url: "http://library.duke.edu/rubenstein/",
+  phone: "919-660-5822",
+  email: "special-collections@duke.edu",
+  ask: "http://library.duke.edu/rubenstein/ask"
+)
+Contact.create(
+  slug: "hartman",
+  name: "John W. Hartman Center for Sales, Advertising & Marketing History",
+  short_name: "Hartman Center",
+  url: "http://library.duke.edu/rubenstein/hartman/",
+  phone: "919-660-5827",
+  email: "hartman-center@duke.edu",
+  ask: "http://library.duke.edu/rubenstein/hartman/ask"
+)
+Contact.create(
+  slug: "bingham",
+  name: "Sallie Bingham Center for Women's History & Culture",
+  short_name: "Bingham Center",
+  url: "http://library.duke.edu/rubenstein/bingham/",
+  phone: "919-660-5967",
+  email: "cwhc@duke.edu",
+  ask: "http://library.duke.edu/rubenstein/ask"
+)
+Contact.create(
+  slug: "docarts",
+  name: "Archive of Documentary Arts",
+  url: "http://library.duke.edu/rubenstein/documentaryarts/",
+  phone: "919-660-5822",
+  email: "special-collections@duke.edu",
+  ask: "http://library.duke.edu/rubenstein/ask"
+)
+Contact.create(
+  slug: "franklin",
+  name: "John Hope Franklin Research Center",
+  short_name: "Franklin Research Center",
+  url: "http://library.duke.edu/rubenstein/franklin/",
+  phone: "919-660-5922",
+  email: "franklin-collection@duke.edu",
+  ask: "http://library.duke.edu/rubenstein/ask"
+)
+Contact.create(
+  slug: "hom",
+  name: "History of Medicine Collections",
+  url: "http://library.duke.edu/rubenstein/history-of-medicine/",
+  phone: "919-684-8549",
+  email: "special-collections@duke.edu",
+  ask: "http://library.duke.edu/rubenstein/ask"
+)
+Contact.create(
+  slug: "humanrights",
+  name: "Human Rights Archive",
+  url: "http://library.duke.edu/rubenstein/human-rights/",
+  phone: "919-660-5822",
+  email: "special-collections@duke.edu",
+  ask: "http://library.duke.edu/rubenstein/ask"
+)
+Contact.create(
+  slug: "uarchives",
+  name: "Duke University Archives",
+  short_name: "University Archives",
+  url: "http://library.duke.edu/rubenstein/uarchives/",
+  phone: "919-660-5822",
+  email: "uarchives@duke.edu",
+  ask: "http://library.duke.edu/rubenstein/uarchives/ask"
+)
+Contact.create(
+  slug: "divinity",
+  name: "Divinity School Library",
+  url: "http://library.divinity.duke.edu/",
+  phone: "919-660-3453",
+  email: "divlib@duke.edu",
+  ask: "http://library.divinity.duke.edu/ask-us"
+)
+Contact.create(
+  slug: "libraries",
+  name: "Duke University Libraries",
+  url: "http://library.duke.edu",
+  phone: "919-660-5880",
+  email: "askref@duke.edu",
+  ask: "http://library.duke.edu/research/ask"
+)
