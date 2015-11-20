@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       resources :admin_sets, only: [:index, :show] do
         get 'find', on: :collection
       end
+      scope 'directory' do
+        get 'find', to: 'directory#find'
+      end
     end
   end
 

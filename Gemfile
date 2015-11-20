@@ -9,6 +9,7 @@ gem 'rails_admin', '~> 0.7'
 gem 'devise', '~> 3.5'
 gem 'omniauth-shibboleth', '~> 1.2'
 gem 'cancancan', '~> 1.12'
+gem 'net-ldap', '~> 0.12'
 
 gem 'therubyracer', require: 'v8'
 
