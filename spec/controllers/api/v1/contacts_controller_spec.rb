@@ -3,8 +3,6 @@ require "rails_helper"
 module Api::V1
   RSpec.describe ContactsController do
 
-    before { Contact.create(slug: 'library', name: 'The Library') }
-
     describe "#index" do
       it "returns the list of all contacts" do
         get :index
@@ -26,23 +24,23 @@ module Api::V1
       it "return an error response when not found" do
         get :show, id: "foo"
         expect(response.response_code).to eq(404)
-        expect(response.content_type).to eq("text/plain")
+        expect(response.content_type).to eq("application/json")
       end
     end
 
     describe "#find" do
       it "returns a contact" do
-        get :find, slug: "library"
+        get :find, slug: "libraries"
         expect(response.response_code).to eq(200)
         expect(response.content_type).to eq("application/json")
         result = JSON.parse(response.body)
         expect(result).to be_a(Hash)
-        expect(result["slug"]).to eq("library")
+        expect(result["slug"]).to eq("libraries")
       end
       it "return an error response when not found" do
         get :find, slug: "foo"
         expect(response.response_code).to eq(404)
-        expect(response.content_type).to eq("text/plain")
+        expect(response.content_type).to eq("application/json")
       end
     end
 

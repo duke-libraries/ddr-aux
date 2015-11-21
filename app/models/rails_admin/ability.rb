@@ -27,7 +27,7 @@ module RailsAdmin
     def post_initialize
       can :access, :rails_admin
       can :dashboard
-      can [:read, :export, :history], :all
+      can [:read, :export, :history], [AdminSet, Contact, License]
     end
 
   end

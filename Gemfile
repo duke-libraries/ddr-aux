@@ -10,6 +10,7 @@ gem 'devise', '~> 3.5'
 gem 'omniauth-shibboleth', '~> 1.2'
 gem 'cancancan', '~> 1.12'
 gem 'net-ldap', '~> 0.12'
+gem 'api-auth', '~> 1.3.2'
 
 gem 'therubyracer', require: 'v8'
 

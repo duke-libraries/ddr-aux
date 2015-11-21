@@ -24,7 +24,7 @@ module Api::V1
       it "return an error response when not found" do
         get :show, id: "foo"
         expect(response.response_code).to eq(404)
-        expect(response.content_type).to eq("text/plain")
+        expect(response.content_type).to eq("application/json")
       end
     end
 
@@ -40,7 +40,7 @@ module Api::V1
       it "return an error response when not found" do
         get :find, url: "foo"
         expect(response.response_code).to eq(404)
-        expect(response.content_type).to eq("text/plain")
+        expect(response.content_type).to eq("application/json")
       end
     end
 
