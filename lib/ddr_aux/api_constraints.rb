@@ -8,7 +8,6 @@ module DdrAux
       @default = default
     end
 
-
     def matches?(request)
       default || has_accept_version_header?(request)
     end

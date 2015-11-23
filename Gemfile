@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.13'
+gem 'activeresource', group: [:development, :test]
 
 gem 'mysql2', group: :production
 gem 'sqlite3', group: [:development, :test]
