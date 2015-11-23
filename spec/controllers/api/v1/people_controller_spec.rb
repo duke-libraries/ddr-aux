@@ -3,6 +3,10 @@ require "rails_helper"
 module Api::V1
   RSpec.describe PeopleController do
 
+    before do
+      allow(controller).to receive(:api_authenticate) { true }
+    end
+
     let(:mock_ldap) { double(find: nil) }
 
     describe "#find" do
