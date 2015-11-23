@@ -13,5 +13,9 @@ module Api::V1
       @ldap ||= DdrAux::LdapGateway.new
     end
 
+    def grouper
+      @grouper ||= DdrAux::GrouperGateway.new
+    end
+
   end
 end

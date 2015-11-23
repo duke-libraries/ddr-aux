@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         get 'find', to: 'model#find'
         get ':id',  to: 'model#show'
       end
+      get 'groups', to: 'groups#index'
       get 'people/find', to: 'people#find'
     end
   end
