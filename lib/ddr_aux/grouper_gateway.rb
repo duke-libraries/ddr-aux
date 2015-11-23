@@ -5,6 +5,8 @@ module DdrAux
   class GrouperGateway
 
     class Error < ::StandardError; end
+    class ClientError < Error; end
+    class ServerError < Error; end
 
     class Groups
       def self.call(groups)
@@ -33,7 +35,7 @@ module DdrAux
 
     def groups(filter: nil, subject: nil)
       if filter.nil? && subject.nil?
-        raise Error, "DdrAux::GrouperGateway#groups requires `filter` and/or `subject` keyword argument(s)."
+        raise ClientError, "DdrAux::GrouperGateway#groups requires `filter` and/or `subject` keyword argument(s)."
       end
       if subject
         groups_by_subject(subject, filter: filter)
@@ -74,7 +76,7 @@ module DdrAux
       if grouper.ok?
         response
       else
-        raise Error, response
+        raise ServerError, response
       end
     end
 

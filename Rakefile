@@ -1,6 +1,3 @@
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
@@ -37,5 +34,30 @@ task :create_admin => :environment do
     password = Devise.friendly_token
     User.create!(username: "admin", admin: true, password: password)
     puts "Created user 'admin' with password '#{password}'."
+  end
+end
+
+namespace :api do
+  desc "Create API account"
+  task :account, [:access_id] => :environment do |t, args|
+    account = ApiAccount.create!(access_id: args[:access_id])
+    puts <<-EOS
+
+API account created:
+
+Access ID:  #{account.access_id}
+Secret Key: #{account.secret_key}"
+
+    EOS
+  end
+end
+
+namespace :test do
+  desc "Run API integration tests"
+  task :integration => :environment do
+    system "rails server -e test -d"
+    system "rspec ./test/integration/"
+    pid = `cat tmp/pids/server.pid`
+    system "kill -QUIT #{pid}"
   end
 end

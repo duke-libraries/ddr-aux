@@ -26,6 +26,10 @@ module Api::V1
       error :unauthorized
     end
 
+    def bad_request
+      error :bad_request
+    end
+
     def error(status)
       head(status, content_type: "application/json")
     end
