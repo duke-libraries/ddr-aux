@@ -3,7 +3,7 @@ require "active_resource_helper"
 module ActiveResourceHelper
   RSpec.describe License do
 
-    it "retrieve all records" do
+    it "retrieves all records" do
       expect(License.all).to be_present
     end
 

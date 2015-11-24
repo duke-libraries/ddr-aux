@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "API v1 model routing", type: :routing do
 
-  it "routes /api/:model" do
+  it "routes GET /api/:model" do
     expect(get: "/api/admin_sets")
       .to route_to(controller: "api/v1/model", action: "index", model: "admin_sets", format: "json")
     expect(get: "/api/contacts")
@@ -12,7 +12,7 @@ RSpec.describe "API v1 model routing", type: :routing do
     expect(get: "/api/foobar").not_to be_routable
   end
 
-  it "routes /api/:model/:id" do
+  it "routes GET /api/:model/:id" do
     expect(get: "/api/admin_sets/1")
       .to route_to(controller: "api/v1/model", action: "show", model: "admin_sets", id: "1", format: "json")
     expect(get: "/api/contacts/1")
@@ -21,7 +21,7 @@ RSpec.describe "API v1 model routing", type: :routing do
       .to route_to(controller: "api/v1/model", action: "show", model: "licenses", id: "1", format: "json")
   end
 
-  it "routes /api/:model/find" do
+  it "routes GET /api/:model/find" do
     expect(get: "/api/admin_sets/find?code=dc")
       .to route_to(controller: "api/v1/model", action: "find", model: "admin_sets", code: "dc", format: "json")
     expect(get: "/api/contacts/find?code=dc")

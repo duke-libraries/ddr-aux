@@ -8,7 +8,7 @@ module ActiveResourceHelper
 
     after(:all) { ::AdminSet.destroy_all }
 
-    it "retrieve all records" do
+    it "retrieves all records" do
       expect(AdminSet.all).to be_present
     end
 

@@ -21,6 +21,13 @@ Rails.application.routes.draw do
         get ':id',  to: 'model#show'
       end
       get 'groups', to: 'groups#index'
+      scope 'identifiers' do
+        get    '/',    to: 'identifiers#index'
+        post   '/',    to: 'identifiers#create'
+        get    '/*id', to: 'identifiers#show'
+        put    '/*id', to: 'identifiers#update'
+        delete '/*id', to: 'identifiers#destroy'
+      end
       get 'people/find', to: 'people#find'
     end
   end
