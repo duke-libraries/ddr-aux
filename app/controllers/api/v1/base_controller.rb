@@ -31,7 +31,10 @@ module Api::V1
     end
 
     def error(status)
-      head(status, content_type: "application/json")
+      code = Rack::Utils.status_code(status)
+      message = status.to_s.titleize
+      content = { error: { message: message, code: code } }
+      render json: content, status: status
     end
 
   end

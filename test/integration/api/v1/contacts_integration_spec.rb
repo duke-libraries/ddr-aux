@@ -3,7 +3,7 @@ require "active_resource_helper"
 module ActiveResourceHelper
   RSpec.describe Contact do
 
-    it "retrieve all records" do
+    it "retrieves all records" do
       expect(Contact.all).to be_present
     end
 

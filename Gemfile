@@ -13,7 +13,8 @@ gem 'cancancan', '~> 1.12'
 gem 'net-ldap', '~> 0.12'
 gem 'grouper-rest-client', '0.2.7'
 gem 'api-auth', '~> 1.3.2'
-gem "hashie"
+gem 'hashie', '~> 3.4'
+gem 'ezid-client', '~> 1.2'
 
 gem 'therubyracer', require: 'v8'
 

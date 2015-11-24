@@ -1,5 +1,8 @@
 require "spec_helper"
 require "active_resource"
+require "ezid/test_helper"
+
+ezid_test_mode!
 
 module ActiveResourceHelper
 
@@ -11,6 +14,9 @@ module ActiveResourceHelper
   end
 
   class Contact < TestResource
+  end
+
+  class Identifier < TestResource
   end
 
   class License < TestResource
