@@ -6,6 +6,7 @@ module Api::V1
     before_action :api_authenticate
 
     rescue_from DdrAux::LdapGateway::NotFound, with: :not_found
+    rescue_from DdrAux::GrouperGateway::ClientError, with: :bad_request
 
     private
 
