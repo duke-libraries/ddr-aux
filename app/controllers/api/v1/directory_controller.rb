@@ -1,4 +1,5 @@
 require "ddr_aux/ldap_gateway"
+require "ddr_aux/grouper_gateway"
 
 module Api::V1
   class DirectoryController < BaseController
