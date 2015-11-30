@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.13'
+gem 'activeresource', group: [:development, :test]
 
 gem 'mysql2', group: :production
 gem 'sqlite3', group: [:development, :test]
@@ -9,6 +10,11 @@ gem 'rails_admin', '~> 0.7'
 gem 'devise', '~> 3.5'
 gem 'omniauth-shibboleth', '~> 1.2'
 gem 'cancancan', '~> 1.12'
+gem 'net-ldap', '~> 0.12'
+gem 'grouper-rest-client', '0.2.7'
+gem 'api-auth', '~> 1.3.2'
+gem 'hashie', '~> 3.4'
+gem 'ezid-client', '~> 1.2'
 
 gem 'therubyracer', require: 'v8'
 

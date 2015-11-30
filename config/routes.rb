@@ -15,15 +15,20 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: DdrAux::ApiConstraints.new(version: 1, default: true) do
-      resources :contacts, only: [:index, :show] do
-        get 'find', on: :collection
+      scope ':model', constraints: { model: /(admin_sets|contacts|licenses)/ } do
+        get '/',    to: 'model#index'
+        get 'find', to: 'model#find'
+        get ':id',  to: 'model#show'
       end
-      resources :licenses, only: [:index, :show] do
-        get 'find', on: :collection
+      get 'groups', to: 'groups#index'
+      scope 'identifiers' do
+        get    '/',    to: 'identifiers#index'
+        post   '/',    to: 'identifiers#create'
+        get    '/*id', to: 'identifiers#show'
+        put    '/*id', to: 'identifiers#update'
+        delete '/*id', to: 'identifiers#destroy'
       end
-      resources :admin_sets, only: [:index, :show] do
-        get 'find', on: :collection
-      end
+      get 'people/find', to: 'people#find'
     end
   end
 
