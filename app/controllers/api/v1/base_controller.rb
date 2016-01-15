@@ -1,8 +1,20 @@
+require "ddr_aux/api"
+
 module Api::V1
   class BaseController < ApplicationController
 
     respond_to :json
     protect_from_forgery with: :null_session
+
+    def self.api_authenticate(*args)
+      if DdrAux::Api.api_auth_enabled
+        if args.empty?
+          self.before_action :api_authenticate
+        else
+          self.before_action :api_authenticate, *args
+        end
+      end
+    end
 
     private
 

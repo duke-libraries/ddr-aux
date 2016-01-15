@@ -1,5 +1,5 @@
-module DdrAux
-  class ApiConstraints
+module DdrAux::Api
+  class Constraints
 
     attr_reader :version, :default
 
