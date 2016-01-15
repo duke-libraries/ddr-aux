@@ -1,28 +1,14 @@
-require "hashie"
 require "grouper-rest-client"
+require_relative "group"
+require_relative "subject"
 
-module DdrAux
-  class GrouperGateway
+module DdrAux::Grouper
 
-    class Error < ::StandardError; end
-    class ClientError < Error; end
-    class ServerError < Error; end
+  class Error < ::StandardError; end
+  class ClientError < Error; end
+  class ServerError < Error; end
 
-    class Groups
-      def self.call(groups)
-        groups.map { |g| Group.new(g) }
-      end
-    end
-
-    class Group < Hashie::Mash
-      def initialize(group)
-        if group.instance_variable_defined?("@json")
-          super group.instance_variable_get("@json")
-        else
-          super
-        end
-      end
-    end
+  class Gateway
 
     attr_reader :url, :user, :password, :timeout
 
@@ -31,6 +17,16 @@ module DdrAux
       @user = user || ENV["GROUPER_USER"]
       @password = password || ENV["GROUPER_PASSWORD"]
       @timeout = timeout || ENV.fetch("GROUPER_TIMEOUT", 5).to_i
+    end
+
+    def inspect
+      super.sub(/@password="[^"]*"/, "@password=\"******\"")
+    end
+
+    def group(name)
+      if result = grouper.group(name)
+        Group.new(result.instance_variable_get("@json"))
+      end
     end
 
     def groups(filter: nil, subject: nil)
@@ -46,7 +42,7 @@ module DdrAux
 
     def groups_by_filter(filter)
       results = handle_response grouper.groups(filter)
-      Groups.call(results)
+      results.map { |result| Group.new(result.instance_variable_get("@json")) }
     end
 
     def groups_by_subject(subject, filter: nil)
@@ -59,15 +55,34 @@ module DdrAux
       response = handle_response grouper.call("subjects", :post, request_body)
       ws_result = response["WsGetGroupsResults"]["results"].first
       results = if ws_result && ws_result["wsGroups"]
-                 ws_result["wsGroups"]
-               else
-                 []
-               end
-      groups = Groups.call(results)
+                  ws_result["wsGroups"]
+                else
+                  []
+                end
+      groups = results.map { |result| Group.new(result) }
       if filter
         groups.select! { |group| group.name.start_with?(filter) }
       end
       groups
+    end
+
+    def members(group_name)
+      request_body = {
+        "WsRestGetMembersRequest" => {
+          "subjectAttributeNames" => Subject::ATTRIBUTES,
+          "wsGroupLookups" => [{"groupName" => group_name}]
+        }
+      }
+      response = handle_response grouper.call("groups", :post, request_body)
+      ws_result = response["WsGetMembersResults"]["results"].first
+      results = if ws_result && ws_result["wsSubjects"]
+                  ws_result["wsSubjects"]
+                else
+                  []
+                end
+      results
+        .map    { |result| Subject.new(result["attributeValues"]) }
+        .reject { |subject| subject.name.blank? }
     end
 
     private
@@ -78,11 +93,6 @@ module DdrAux
       else
         raise ServerError, response
       end
-    end
-
-    def group_attributes(group)
-      # Yes, this is awful, but grouper-rest-client is dead.
-      group
     end
 
     def grouper

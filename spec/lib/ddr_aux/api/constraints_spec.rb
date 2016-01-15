@@ -1,8 +1,8 @@
 require "rails_helper"
-require "ddr_aux/api_constraints"
+require "ddr_aux/api/constraints"
 
-module DdrAux
-  RSpec.describe ApiConstraints do
+module DdrAux::Api
+  RSpec.describe Constraints do
 
     describe "#matches?" do
       describe "when initialized with default: true" do
