@@ -1,6 +1,9 @@
 require "active_resource_helper"
+require "ezid/test_helper"
 
-module ActiveResourceHelper
+ezid_test_mode!
+
+module DdrAux::TestHelper
   RSpec.describe Identifier do
 
     before(:all) do
