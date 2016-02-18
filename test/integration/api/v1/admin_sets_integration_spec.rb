@@ -1,7 +1,7 @@
 require "rails_helper"
 require "active_resource_helper"
 
-module ActiveResourceHelper
+module DdrAux::TestHelper
   RSpec.describe AdminSet do
 
     before(:all) { ::AdminSet.create(code: "foo", title: "Foo") }
