@@ -3,8 +3,10 @@ require "rails_helper"
 module Api::V1
   RSpec.describe GroupsController do
 
+    let(:user) { FactoryGirl.create(:user, :api_key) }
+
     before do
-      allow(controller).to receive(:api_authenticate) { true }
+      allow(controller).to receive(:api_authenticate_with_http_basic) { user }
     end
 
     let(:mock_grouper) { double(groups: nil) }
