@@ -1,18 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.13'
+gem 'rails', '~> 4.2.5'
 gem 'activeresource', group: [:development, :test]
 
 gem 'mysql2', group: :production
 gem 'sqlite3', group: [:development, :test]
 
 gem 'rails_admin', '~> 0.7'
-gem 'devise', '~> 3.5'
+gem 'devise', '~> 3.5.6'
 gem 'omniauth-shibboleth', '~> 1.2'
 gem 'cancancan', '~> 1.12'
 gem 'net-ldap', '~> 0.12'
 gem 'grouper-rest-client', '0.2.7'
-gem 'api-auth', '~> 1.3.2'
 gem 'hashie', '~> 3.4'
 gem 'ezid-client', '~> 1.2'
 
@@ -22,18 +21,19 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
 
 gem 'bootstrap-sass'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
