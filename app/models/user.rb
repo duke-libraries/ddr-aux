@@ -4,27 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :omniauthable, omniauth_providers: [:shibboleth]
   before_create :set_generated_password, if: "password.nil?"
 
-  rails_admin do
-    list do
-      field :username
-      field :display_name
-      field :email
-      field :admin
-    end
-    edit do
-      field :admin
-      field :username
-      field :display_name
-      field :email
-      field :last_name
-      field :first_name
-      field :nickname
-    end
-    visible do
-      bindings[:controller].current_user.admin?
-    end
-  end
-
   def self.from_omniauth(auth)
     user = find_by(username: auth.uid) || new(username: auth.uid)
     user.update!(email: auth.info.email,
