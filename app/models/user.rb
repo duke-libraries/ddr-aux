@@ -28,28 +28,21 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_api_key
-    SecureRandom.base64(64)
+    Devise.friendly_token
   end
 
-  rails_admin do
-    list do
-      field :username
-      field :email
-      field :first_name
-      field :last_name
-      field :admin
-    end
-    visible do
-      bindings[:controller].current_user.admin?
-    end
+  def generate_api_key!
+    update(api_key: User.generate_api_key)
   end
+
+  def to_s
+    username
+  end
+
+  private
 
   def set_generated_password
     self.password = User.generate_password
-  end
-
-  def set_generated_api_key
-    self.api_key = User.generate_api_key
   end
 
 end

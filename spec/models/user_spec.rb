@@ -8,9 +8,10 @@ RSpec.describe User, type: :model do
     its(:api_key) { is_expected.to be_nil }
     its(:password) { is_expected.to be_present }
 
-    describe "#set_generated_api_key" do
+    describe "#generate_api_key!" do
       it "auto-generates and persists the api key" do
-        subject.set_generated_api_key
+        subject.generate_api_key!
+        subject.reload
         expect(subject.api_key).to be_present
       end
     end
