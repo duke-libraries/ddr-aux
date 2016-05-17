@@ -38,17 +38,15 @@ task :create_admin => :environment do
 end
 
 namespace :api do
-  desc "Create API account"
-  task :account, [:access_id] => :environment do |t, args|
-    account = ApiAccount.create!(access_id: args[:access_id])
-    puts <<-EOS
-
-API account created:
-
-Access ID:  #{account.access_id}
-Secret Key: #{account.secret_key}"
-
-    EOS
+  desc "Generate an API key for a user"
+  task :generate_key, [:username] => :environment do |t, args|
+    user = User.find_by_username!(args[:username])
+    if user.api_key
+      puts "User #{user} already has API key: #{user.api_key}"
+    else
+      user.generate_api_key!
+      puts "API key for #{user}: #{user.api_key}"
+    end
   end
 end
 
