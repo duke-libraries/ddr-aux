@@ -1,7 +1,7 @@
 module Api::V1
   class IdentifiersController < BaseController
 
-    before_action :api_authenticate, except: :show
+    api_authenticate except: :show
 
     rescue_from NotImplementedError, with: :not_found
 

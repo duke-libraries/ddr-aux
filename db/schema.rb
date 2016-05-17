@@ -11,63 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121024433) do
+ActiveRecord::Schema.define(version: 20160223014043) do
 
-  create_table "admin_sets", force: true do |t|
-    t.string   "code"
-    t.string   "title"
+  create_table "admin_sets", force: :cascade do |t|
+    t.string   "code",       limit: 255
+    t.string   "title",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "api_accounts", force: true do |t|
-    t.string "access_id"
-    t.string "secret_key"
+  create_table "contacts", force: :cascade do |t|
+    t.string "slug",       limit: 255
+    t.string "name",       limit: 255
+    t.string "short_name", limit: 255
+    t.string "url",        limit: 255
+    t.string "phone",      limit: 255
+    t.string "email",      limit: 255
+    t.string "ask",        limit: 255
   end
 
-  create_table "contacts", force: true do |t|
-    t.string "slug"
-    t.string "name"
-    t.string "short_name"
-    t.string "url"
-    t.string "phone"
-    t.string "email"
-    t.string "ask"
-  end
-
-  create_table "licenses", force: true do |t|
-    t.string   "title"
-    t.string   "url"
+  create_table "licenses", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.string   "url",        limit: 255
     t.text     "terms",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "email",              default: "",    null: false
-    t.string   "encrypted_password", default: "",    null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "display_name"
-    t.string   "nickname"
+  create_table "users", force: :cascade do |t|
+    t.string   "username",           limit: 255
+    t.string   "email",              limit: 255, default: "",    null: false
+    t.string   "encrypted_password", limit: 255, default: "",    null: false
+    t.string   "first_name",         limit: 255
+    t.string   "last_name",          limit: 255
+    t.string   "display_name",       limit: 255
+    t.string   "nickname",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",              default: false
+    t.boolean  "admin",                          default: false
+    t.string   "api_key",            limit: 255
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true
-
-  create_table "versions", force: true do |t|
-    t.string   "item_type",      null: false
-    t.integer  "item_id",        null: false
-    t.string   "event",          null: false
-    t.string   "whodunnit"
-    t.text     "object"
-    t.datetime "created_at"
-    t.text     "object_changes"
-  end
-
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end

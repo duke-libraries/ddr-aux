@@ -1,4 +1,4 @@
-require "ddr_aux/api_constraints"
+require "ddr_aux/api/constraints"
 
 Rails.application.routes.draw do
 
@@ -14,13 +14,17 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/manage', as: 'rails_admin'
 
   namespace :api, defaults: {format: 'json'} do
-    scope module: :v1, constraints: DdrAux::ApiConstraints.new(version: 1, default: true) do
+    scope module: :v1, constraints: DdrAux::Api::Constraints.new(version: 1, default: true) do
       scope ':model', constraints: { model: /(admin_sets|contacts|licenses)/ } do
         get '/',    to: 'model#index'
         get 'find', to: 'model#find'
         get ':id',  to: 'model#show'
       end
-      get 'groups', to: 'groups#index'
+      scope 'groups' do
+        get '/', to: 'groups#index'
+        get '/:name', to: 'groups#show'
+        get '/:name/members', to: 'groups#members'
+      end
       scope 'identifiers' do
         get    '/',    to: 'identifiers#index'
         post   '/',    to: 'identifiers#create'

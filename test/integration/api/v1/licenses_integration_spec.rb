@@ -1,6 +1,6 @@
 require "active_resource_helper"
 
-module ActiveResourceHelper
+module DdrAux::TestHelper
   RSpec.describe License do
 
     it "retrieves all records" do

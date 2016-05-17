@@ -1,13 +1,13 @@
 require "ddr_aux/ldap_gateway"
-require "ddr_aux/grouper_gateway"
+require "ddr_aux/grouper/gateway"
 
 module Api::V1
   class DirectoryController < BaseController
 
-    before_action :api_authenticate
+    api_authenticate
 
     rescue_from DdrAux::LdapGateway::NotFound, with: :not_found
-    rescue_from DdrAux::GrouperGateway::ClientError, with: :bad_request
+    rescue_from DdrAux::Grouper::ClientError, with: :bad_request
 
     private
 
@@ -16,7 +16,7 @@ module Api::V1
     end
 
     def grouper
-      @grouper ||= DdrAux::GrouperGateway.new
+      @grouper ||= DdrAux::Grouper::Gateway.new
     end
 
   end
