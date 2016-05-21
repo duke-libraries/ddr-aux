@@ -22,12 +22,25 @@ module RailsAdmin
   # can :history, Model, object         # for HistoryShow
   # can :show_in_app, Model, object
   #
-  class Ability < ::BaseAbility
+  class Ability
+    include CanCan::Ability
 
-    def post_initialize
+    attr_reader :user
+
+    def initialize(user)
+      @user = user || User.new
+      apply_normal_abilities
+      apply_admin_abilities if user.admin?
+    end
+
+    def apply_admin_abilities
+      can :manage, :all
+    end
+
+    def apply_normal_abilities
       can :access, :rails_admin
       can :dashboard
-      can [:read, :export, :history], [AdminSet, Contact, License]
+      can [ :read, :export], [ AdminSet, Contact, License ]
     end
 
   end

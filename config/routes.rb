@@ -33,6 +33,9 @@ Rails.application.routes.draw do
         delete '/*id', to: 'identifiers#destroy'
       end
       get 'people/find', to: 'people#find'
+      namespace :duracloud do
+        resources :manifest_entries, only: :index
+      end
     end
   end
 

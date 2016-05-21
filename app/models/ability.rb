@@ -1,3 +1,0 @@
-class Ability < BaseAbility
-
-end
