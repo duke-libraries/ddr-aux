@@ -45,7 +45,7 @@ module Duracloud
 
     def download_report_file(report)
       require "tempfile"
-      Tempfile.open("report", "wb") do |temp|
+      Tempfile.open("report") do |temp|
         temp.write(report.tsv)
         temp.close
         yield temp.path
