@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       end
       get 'people/find', to: 'people#find'
       namespace :duracloud do
-        resources :manifest_entries, only: :index
+        get 'manifest_entries/fcrepo3', to: 'manifest_entries#fcrepo3'
       end
     end
   end

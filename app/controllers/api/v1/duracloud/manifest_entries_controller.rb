@@ -4,19 +4,12 @@ module Api::V1
 
       # api_authenticate
 
-      def index
-        space_id, content_id = index_params.require(:space_id), index_params.require(:content_id)
+      def fcrepo3
         results = ::Duracloud::ManifestEntry
-                  .where(space_id: space_id)
-                  .content(content_id)
-        results.where(store_id: index_params[:store_id]) if index_params[:store_id].present?
+                  .fcrepo3(params.require(:object_uri))
+                  .where(space_id: params.require(:space_id))
+        results.where(store_id: params[:store_id]) if params[:store_id].present?
         render json: results
-      end
-
-      private
-
-      def index_params
-        params.permit(:space_id, :content_id, :store_id)
       end
 
     end

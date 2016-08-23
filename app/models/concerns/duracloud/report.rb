@@ -3,15 +3,32 @@ require "duracloud"
 module Duracloud
   module Report
 
+    ESCAPE_CHAR = "\\"
+
     def self.extended(base)
-      base.class_eval do
-        scope :content, ->(content_id) { where(["content_id LIKE ?", "%#{content_id}%"]) }
-        class_attribute :report_type
+      class << base
+        attr_accessor :report_type
       end
     end
 
     def default_space_id
       ENV["DURACLOUD_SPACE"]
+    end
+
+    # @example
+    #
+    # Object URI:
+    # (unencoded info:fedora/duke:1)
+    # info%3Afedora%2Fduke%3A1
+    #
+    # SQL query:
+    # content_id LIKE '%/info\%3Afedora\%2Fduke\%3A1' OR content_id LIKE '%/info\%3Afedora\%2Fduke\%3A1\%2F%'
+    #
+    def fcrepo3(object_uri)
+      content_id = URI.encode_www_form_component(object_uri).gsub(/%/, "#{ESCAPE_CHAR}%")
+      where("content_id LIKE ? ESCAPE '#{ESCAPE_CHAR}' OR content_id LIKE ? ESCAPE '#{ESCAPE_CHAR}'",
+            "%/#{content_id}",
+            "%/#{content_id}#{ESCAPE_CHAR}%2F%")
     end
 
     def update_report(space_id, store_id = nil)
