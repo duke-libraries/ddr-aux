@@ -84,11 +84,6 @@ RailsAdmin.config do |config|
           "Content ID"
         end
       end
-      field :md5 do
-        label do
-          "MD5"
-        end
-      end
     end
   end
 
@@ -103,7 +98,6 @@ RailsAdmin.config do |config|
       end
       field :timestamp
       field :action
-      field :username
     end
   end
 
