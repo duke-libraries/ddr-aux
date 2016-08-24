@@ -76,4 +76,43 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Duracloud::ManifestEntry' do
+    list do
+      field :space_id
+      field :content_id do
+        label do
+          "Content ID"
+        end
+      end
+    end
+  end
+
+  config.model 'Duracloud::AuditLogEntry' do
+    list do
+      field :store_id
+      field :space_id
+      field :content_id do
+        label do
+          "Content ID"
+        end
+      end
+      field :timestamp
+      field :action
+    end
+  end
+
+  config.model 'Duracloud::BitIntegrityCheck' do
+    list do
+      field :date_checked
+      field :store_type
+      field :space_id
+      field :content_id do
+        label do
+          "Content ID"
+        end
+      end
+      field :result
+    end
+  end
+
 end
