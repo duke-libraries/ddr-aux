@@ -1,6 +1,6 @@
 module Duracloud
   class ManifestEntry < ActiveRecord::Base
-    include Report
+    extend Report
 
     self.table_name = "duracloud_manifest_entries"
     self.report_type = "Duracloud::Manifest"

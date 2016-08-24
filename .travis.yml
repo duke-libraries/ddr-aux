@@ -1,8 +1,11 @@
 language: ruby
 rvm:
-  - 2.1
-  - 2.2
-before_script: "bundle exec rake db:migrate"
-script: "bundle exec rake"
+- 2.1
+- 2.2
+before_script: bundle exec rake db:migrate
+script: bundle exec rake
 cache:
-  - bundler
+- bundler
+notifications:
+  slack:
+    secure: HmWMx++WDNwPvXzSXwIGlLIgxUFaj83Tdk8zCtDAfUvc0HpEl4yXS5TC3Adgdj/JJCarB/DYWfslwQ6HtZzWWcJvX2JvT3ch/PhIAVRntZLq2+ATzahmCr1Dvy9jWTCob+cBzZDa3xqk3tSn+nTFobvhOw0zd19OWrh0W9PA+to=
