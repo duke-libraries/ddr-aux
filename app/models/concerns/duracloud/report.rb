@@ -3,8 +3,6 @@ require "duracloud"
 module Duracloud
   module Report
 
-    ESCAPE_CHAR = "\\"
-
     def self.extended(base)
       class << base
         attr_accessor :report_type
@@ -25,16 +23,19 @@ module Duracloud
     # content_id LIKE '%/info\%3Afedora\%2Fduke\%3A1' OR content_id LIKE '%/info\%3Afedora\%2Fduke\%3A1\%2F%'
     #
     def fcrepo3(object_uri)
-      content_id = URI.encode_www_form_component(object_uri).gsub(/%/, "#{ESCAPE_CHAR}%")
-      where("content_id LIKE ? ESCAPE '#{ESCAPE_CHAR}' OR content_id LIKE ? ESCAPE '#{ESCAPE_CHAR}'",
-            "%/#{content_id}",
-            "%/#{content_id}#{ESCAPE_CHAR}%2F%")
+      sql = if sqlite?
+              "content_id LIKE ? ESCAPE '\\' OR content_id LIKE ? ESCAPE '\\'"
+            else
+              "content_id LIKE ? OR content_id LIKE ?"
+            end
+      content_id = URI.encode_www_form_component(object_uri).gsub(/%/, "\\%")
+      where(sql, "%/#{content_id}", "%/#{content_id}\\%2F%")
     end
 
     def update_report(space_id, store_id = nil)
       clear_existing_records(space_id, store_id)
       report = get_report(space_id, store_id)
-      if connection.adapter_name.downcase == "mysql2"
+      if mysql?
         mysql_update_report(report)
       else
         report.rows.each { |row| create(row) }
@@ -67,6 +68,16 @@ module Duracloud
         temp.close
         yield temp.path
       end
+    end
+
+    private
+
+    def mysql?
+      connection.adapter_name.downcase == "mysql2"
+    end
+
+    def sqlite?
+      connection.adapter_name.downcase == "sqlite"
     end
   end
 end
