@@ -55,7 +55,7 @@ module Duracloud
     def mysql_update_report(report)
       download_report_file(report) do |path|
         # Assume columns are defined in same order as report fields (R-L)
-        cols = ( column_names - ["id"] ).join(", ")
+        cols = column_names.join(", ")
         sql = "LOAD DATA LOCAL INFILE '#{path}' INTO TABLE #{table_name} IGNORE 1 LINES (#{cols})"
         connection.execute(sql)
       end
