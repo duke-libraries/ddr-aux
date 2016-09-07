@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809025422) do
+ActiveRecord::Schema.define(version: 20160907151209) do
 
   create_table "admin_sets", force: :cascade do |t|
     t.string   "code",       limit: 255
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160809025422) do
     t.string "ask",        limit: 255
   end
 
-  create_table "duracloud_audit_log_entries", force: :cascade do |t|
+  create_table "duracloud_audit_log_entries", id: false, force: :cascade do |t|
     t.string   "account"
     t.string   "store_id"
     t.string   "space_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20160809025422) do
   add_index "duracloud_audit_log_entries", ["store_id"], name: "index_duracloud_audit_log_entries_on_store_id"
   add_index "duracloud_audit_log_entries", ["username"], name: "index_duracloud_audit_log_entries_on_username"
 
-  create_table "duracloud_bit_integrity_checks", force: :cascade do |t|
+  create_table "duracloud_bit_integrity_checks", id: false, force: :cascade do |t|
     t.datetime "date_checked"
     t.string   "account"
     t.string   "store_id"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20160809025422) do
   add_index "duracloud_bit_integrity_checks", ["space_id"], name: "index_duracloud_bit_integrity_checks_on_space_id"
   add_index "duracloud_bit_integrity_checks", ["store_id"], name: "index_duracloud_bit_integrity_checks_on_store_id"
 
-  create_table "duracloud_manifest_entries", force: :cascade do |t|
+  create_table "duracloud_manifest_entries", id: false, force: :cascade do |t|
     t.string "space_id"
     t.string "content_id"
     t.string "md5"
