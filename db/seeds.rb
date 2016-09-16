@@ -115,3 +115,31 @@ Contact.create(
   email: "askref@duke.edu",
   ask: "http://library.duke.edu/research/ask"
 )
+
+#
+# Admin sets
+#
+AdminSet.create(
+  code: "researchdata",
+  title: "Duke Research Data"
+)
+AdminSet.create(
+  code: "duke_scholarship",
+  title: "Duke Scholarship"
+)
+AdminSet.create(
+  code: "rubenstein",
+  title: "Rubenstein Library"
+)
+AdminSet.create(
+  code: "dvs",
+  title: "Data and Visualization Services"
+)
+AdminSet.create(
+  code: "dc",
+  title: "Digital Collections"
+)
+AdminSet.create(
+  code: "nescent",
+  title: "NESCent: National Evolutionary Synthesis Center"
+)
