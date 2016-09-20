@@ -13,6 +13,9 @@ module DdrAux
     class Contact < TestResource
     end
 
+    class ExternalUrl < TestResource
+    end
+
     class Identifier < TestResource
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907151209) do
+ActiveRecord::Schema.define(version: 20160920143937) do
 
   create_table "admin_sets", force: :cascade do |t|
     t.string   "code",       limit: 255
@@ -85,6 +85,11 @@ ActiveRecord::Schema.define(version: 20160907151209) do
 
   add_index "duracloud_manifest_entries", ["content_id"], name: "index_duracloud_manifest_entries_on_content_id"
   add_index "duracloud_manifest_entries", ["space_id"], name: "index_duracloud_manifest_entries_on_space_id"
+
+  create_table "external_urls", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+  end
 
   create_table "licenses", force: :cascade do |t|
     t.string   "title",      limit: 255
