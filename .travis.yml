@@ -2,6 +2,7 @@ language: ruby
 rvm:
 - 2.1
 - 2.2
+- 2.3
 before_script: bundle exec rake db:migrate
 script: bundle exec rake
 cache:
