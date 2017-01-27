@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
+ruby '2.3.1'
 
-gem 'rails', '~> 4.2.5'
+gem 'rails', '4.2.7'
 gem 'activeresource', group: [:development, :test]
 
 gem 'mysql2', group: :production
@@ -14,9 +15,9 @@ gem 'net-ldap', '~> 0.12'
 gem 'grouper-rest-client', '0.2.7'
 gem 'hashie', '~> 3.4'
 gem 'ezid-client', '~> 1.2'
-gem 'duracloud-client', '~> 0.1.4'
+gem 'duracloud-client', '~> 0.3.0'
 
-gem 'therubyracer', require: 'v8'
+gem 'therubyracer', require: 'v8', group: :production
 
 group :test do
   gem 'rspec-rails'
