@@ -20,11 +20,13 @@ Rails.application.routes.draw do
         get 'find', to: 'model#find'
         get ':id',  to: 'model#show'
       end
+
       scope 'groups' do
         get '/', to: 'groups#index'
         get '/:name', to: 'groups#show'
         get '/:name/members', to: 'groups#members'
       end
+
       scope 'identifiers' do
         get    '/',    to: 'identifiers#index'
         post   '/',    to: 'identifiers#create'
@@ -32,9 +34,11 @@ Rails.application.routes.draw do
         put    '/*id', to: 'identifiers#update'
         delete '/*id', to: 'identifiers#destroy'
       end
+
       get 'people/find', to: 'people#find'
+
       namespace :duracloud do
-        get 'manifest_entries/fcrepo3', to: 'manifest_entries#fcrepo3'
+        post 'manifest_entries/select',  to: 'manifest_entries#select'
       end
     end
   end
