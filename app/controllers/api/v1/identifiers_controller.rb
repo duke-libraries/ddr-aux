@@ -11,10 +11,10 @@ module Api::V1
 
     def show
       identifier = Ezid::Identifier.find(params[:id])
-      # `id` must be merged into hash
-      # https://github.com/duke-libraries/ezid-client/issues/57
-      render json: {id: identifier.id}.merge(identifier.to_h)
-    rescue Ezid::Error, e # https://github.com/duke-libraries/ezid-client/issues/58
+      data = identifier.remote_metadata.to_h # https://github.com/duke-libraries/ezid-client/issues/71
+      data.merge!(id: identifier.id)         # https://github.com/duke-libraries/ezid-client/issues/57
+      render json: data
+    rescue Ezid::IdentifierNotFoundError, e
       not_found
     end
 
