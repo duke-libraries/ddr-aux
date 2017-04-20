@@ -59,6 +59,18 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'ExternalUrl' do
+    list do
+      field :title
+      field :url
+    end
+    update do
+      configure :url do
+        read_only true
+      end
+    end
+  end
+
   config.model 'License' do
     list do
       field :title

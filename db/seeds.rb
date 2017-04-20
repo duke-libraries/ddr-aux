@@ -143,3 +143,16 @@ AdminSet.create(
   code: "nescent",
   title: "NESCent: National Evolutionary Synthesis Center"
 )
+
+#
+# External urls
+#
+ExternalUrl.create(
+  title: "Ad*Access Research Guide: Getting Started",
+  url: "http://guides.library.duke.edu/adaccess"
+)
+ExternalUrl.create(
+  title: "Emergence of Advertising in America Research Guide",
+  url: "http://guides.library.duke.edu/eaa"
+)
+
