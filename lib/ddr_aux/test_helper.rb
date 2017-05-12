@@ -19,5 +19,8 @@ module DdrAux
     class License < TestResource
     end
 
+    class RightsStatement < TestResource
+    end
+
   end
 end

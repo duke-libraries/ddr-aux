@@ -1,5 +1,5 @@
 #
-# Licenses
+# Licenses (DEPRECATED in favor of Rights Statements)
 #
 License.create(
   title: "Creative Commons Attribution 4.0 International",
@@ -26,6 +26,92 @@ License.create(
   title: "Creative Commons 1.0 Universal (CC0 Public Domain Dedication)",
   url: "https://creativecommons.org/publicdomain/zero/1.0/"
 )
+
+#
+# Rights Statements
+#
+RightsStatement.create(
+  title: "Creative Commons Attribution 4.0 International",
+  url: "https://creativecommons.org/licenses/by/4.0/",
+  short_title: "CC BY 4.0",
+  feature: ["cc-cc","cc-by"],
+  reuse_text: "Free Re-Use"
+)
+RightsStatement.create(
+  title: "Creative Commons Attribution-NonCommercial 4.0 International",
+  url: "https://creativecommons.org/licenses/by-nc/4.0/",
+  short_title: "CC BY-NC 4.0",
+  feature: ["cc-cc","cc-by","cc-nc"],
+  reuse_text: "Limited Re-Use"
+)
+RightsStatement.create(
+  title: "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International",
+  url: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  short_title: "CC BY-NC-ND 4.0",
+  feature: ["cc-cc","cc-by","cc-nc","cc-nd"],
+  reuse_text: "Limited Re-Use"
+)
+RightsStatement.create(
+  title: "Creative Commons 1.0 Universal (CC0 Public Domain Dedication)",
+  url: "https://creativecommons.org/publicdomain/zero/1.0/",
+  short_title: "CC0 1.0",
+  feature: ["cc-cc","cc-zero"],
+  reuse_text: "Free Re-Use"
+)
+RightsStatement.create(
+  title: "RightsStatements.org: In Copyright",
+  url: "http://rightsstatements.org/vocab/InC/1.0/",
+  short_title: "In Copyright",
+  feature: ["rs-inc"],
+  reuse_text: "No Re-Use"
+)
+RightsStatement.create(
+  title: "RightsStatements.org: In Copyright - Educational Use Permitted",
+  url: "http://rightsstatements.org/vocab/InC-EDU/1.0/",
+  short_title: "Educational Use Permitted",
+  feature: ["rs-inc"],
+  reuse_text: "Limited Re-Use"
+)
+RightsStatement.create(
+  title: "RightsStatements.org: In Copyright - Non-Commercial Use Permitted",
+  url: "http://rightsstatements.org/vocab/InC-NC/1.0/",
+  short_title: "Non-Commercial Use Permitted",
+  feature: ["rs-inc"],
+  reuse_text: "Limited Re-Use"
+)
+RightsStatement.create(
+  title: "RightsStatements.org: In Copyright - Rights-Holder(s) Unlocatable or Unidentifiable",
+  url: "http://rightsstatements.org/vocab/InC-RUU/1.0/",
+  short_title: "Unknown Rights-Holder",
+  feature: ["rs-inc"],
+  reuse_text: "Limited Re-Use"
+)
+RightsStatement.create(
+  title: "RightsStatements.org: No Copyright - United States",
+  url: "http://rightsstatements.org/vocab/NoC-US/1.0/",
+  short_title: "No Copyright - United States",
+  feature: ["rs-noc"],
+  reuse_text: "Free Re-Use"
+)
+RightsStatement.create(
+  title: "RightsStatements.org: Copyright Not Evaluated",
+  url: "http://rightsstatements.org/vocab/CNE/1.0/",
+  short_title: "Copyright Not Evaluated",
+  feature: ["rs-other"]
+)
+RightsStatement.create(
+  title: "RightsStatements.org: Copyright Undetermined",
+  url: "http://rightsstatements.org/vocab/UND/1.0/",
+  short_title: "Copyright Undetermined",
+  feature: ["rs-other"]
+)
+RightsStatement.create(
+  title: "RightsStatements.org: No Known Copyright",
+  url: "http://rightsstatements.org/vocab/NKC/1.0/",
+  short_title: "No Known Copyright",
+  feature: ["rs-other"]
+)
+
 
 #
 # Contacts

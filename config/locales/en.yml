@@ -6,3 +6,5 @@ en:
       license:
         url: "%{help} Not editable after creation."
         terms: "%{help} May include HTML."
+      rights_statement:
+        url: "%{help} Not editable after creation."

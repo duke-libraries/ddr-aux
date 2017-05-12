@@ -93,6 +93,20 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'RightsStatement' do
+    list do
+      field :title
+      field :url
+      field :short_title
+      field :reuse_text
+    end
+    update do
+      configure :url do
+        read_only true
+      end
+    end
+  end
+
   # config.model 'Duracloud::ManifestEntry' do
   #   list do
   #     field :space_id

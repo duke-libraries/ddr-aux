@@ -22,7 +22,7 @@ If you have the `activeresource` gem installed:
 ```ruby
 require 'active_resource'
 
-class License < ActiveResource::Base
+class RightsStatement < ActiveResource::Base
   self.site = "http://localhost:3000/api"
 end
 ```
@@ -30,9 +30,9 @@ end
 Now you can use the usual methods:
 
 ```ruby
-License.all
+RightsStatement.all
 
-License.where(url: "http://example.com")
+RightsStatement.where(url: "http://example.com")
 
-License.find(1)
+RightsStatement.find(1)
 ```

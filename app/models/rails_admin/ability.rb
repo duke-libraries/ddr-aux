@@ -40,7 +40,7 @@ module RailsAdmin
     def apply_normal_abilities
       can :access, :rails_admin
       can :dashboard
-      can [ :read, :export ], [ AdminSet, Contact, Language, License ]
+      can [ :read, :export ], [ AdminSet, Contact, Language, License, RightsStatement ]
     end
 
   end
