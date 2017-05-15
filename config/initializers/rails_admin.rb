@@ -59,6 +59,21 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Language' do
+    list do
+      sort_by :code
+      field :code do
+        sort_reverse false
+      end
+      field :label
+    end
+    update do
+      configure :code do
+        read_only true
+      end
+    end
+  end
+
   config.model 'License' do
     list do
       field :title
