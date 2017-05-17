@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515171834) do
+ActiveRecord::Schema.define(version: 20170516153352) do
 
   create_table "admin_sets", force: :cascade do |t|
     t.string   "code"
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 20170515171834) do
     t.string   "title"
     t.string   "url"
     t.text     "terms",      limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rights_statements", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.string   "url",         limit: 255
+    t.string   "short_title", limit: 255
+    t.string   "feature",     limit: 255
+    t.string   "reuse_text",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: DdrAux::Api::Constraints.new(version: 1, default: true) do
-      scope ':model', constraints: { model: /(admin_sets|contacts|languages|licenses)/ } do
+      scope ':model', constraints: { model: /(admin_sets|contacts|languages|licenses|rights_statements)/ } do
         get '/',    to: 'model#index'
         get 'find', to: 'model#find'
         get ':id',  to: 'model#show'
