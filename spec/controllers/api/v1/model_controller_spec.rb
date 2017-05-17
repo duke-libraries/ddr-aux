@@ -3,7 +3,7 @@ require "rails_helper"
 module Api::V1
   RSpec.describe ModelController do
 
-    models = %w( admin_sets contacts licenses )
+    models = %w( admin_sets contacts languages licenses )
 
     before(:all) { AdminSet.create(code: "foo", title: "Foo") }
 
