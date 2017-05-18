@@ -1,3 +1,5 @@
+require 'base64'
+
 class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
@@ -37,6 +39,11 @@ class User < ActiveRecord::Base
 
   def to_s
     username
+  end
+
+  def api_basic_auth_encoded
+    raise "User '#{self}' does not have an API key." unless api_key.present?
+    Base64.urlsafe_encode64([username, api_key].join(":"))
   end
 
   private

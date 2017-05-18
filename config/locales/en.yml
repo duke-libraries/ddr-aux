@@ -1,6 +1,10 @@
 en:
   admin:
     help:
+      language:
+        code: "%{help} Not editable after creation."
       license:
         url: "%{help} Not editable after creation."
         terms: "%{help} May include HTML."
+      rights_statement:
+        url: "%{help} Not editable after creation."
