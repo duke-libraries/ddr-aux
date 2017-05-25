@@ -10,9 +10,9 @@ class RightsStatement < ActiveRecord::Base
     model.feature.delete_if(&:blank?)
   end
 
-  # Icon selections from CC & RS. Must be array to support e.g., CC-BY-NC-ND.
-  # SVG image file would be stored as ddr-public assets
-  # and displayed in the UI via css classes.
+  # Icon selections from CC & RS. Must be array to support, e.g., CC-BY-NC-ND.
+  # SVG image files are stored as ddr-public assets
+  # and displayed in the UI via empty spans w/css classes.
 
   # http://rightsstatements.org/en/documentation/assets.html
   # https://creativecommons.org/about/downloads/
@@ -24,19 +24,18 @@ class RightsStatement < ActiveRecord::Base
       'cc-nc',
       'cc-nc-eu',
       'cc-nc-jp',
-      'cc-nc-sa',
-      'cc-nc-nd',
+      'cc-nd',
       'cc-pd',
-      'cc-zero',
-      'cc-share',
       'cc-remix',
+      'cc-sa',
+      'cc-share',
+      'cc-zero',
       'rs-inc',
       'rs-noc',
       'rs-other'
     ]
   end
 
-  # 
   def reuse_text_enum
     [
       'Free Re-Use',
