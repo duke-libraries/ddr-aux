@@ -15,9 +15,8 @@ module Api::V1
     end
 
     # GET /api/{plural_resource_name}/find?{params}
+    # @deprecated Use {#index} and select the first record.
     def find
-      warn "[DEPRECATION] `find` is deprecated. Use `index` and select the first record." \
-           " (called from #{caller.first})"
       resource = resource_class.find_by!(permitted_params)
       render json: resource
     end
