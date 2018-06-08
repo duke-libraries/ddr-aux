@@ -7,7 +7,7 @@ gem 'activeresource', group: [:development, :test]
 gem 'mysql2', group: :production
 gem 'sqlite3', group: [:development, :test]
 
-gem 'rails_admin', '~> 0.7'
+gem 'rails_admin', '~> 1.3'
 gem 'devise', '~> 3.5.6'
 gem 'omniauth-shibboleth', '~> 1.2'
 gem 'cancancan', '~> 1.12'
