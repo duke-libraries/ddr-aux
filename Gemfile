@@ -15,7 +15,6 @@ gem 'net-ldap', '~> 0.16'
 gem 'grouper-rest-client', '0.2.7'
 gem 'hashie', '~> 3.4'
 gem 'ezid-client', '~> 1.2'
-gem 'duracloud-client', '~> 0.3.0'
 
 gem 'therubyracer', require: 'v8', group: :production
 
