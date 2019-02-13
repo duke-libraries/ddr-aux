@@ -1,8 +1,9 @@
 language: ruby
 rvm:
   - 2.3.1
+before_install:
+  - gem install bundler -v '~> 2.0' -N
 before_script:
-  - gem install bundler -v '>= 2.0.0' -N
   - bundle exec rake db:migrate
 script: bundle exec rake
 cache:
