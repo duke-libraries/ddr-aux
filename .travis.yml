@@ -1,10 +1,9 @@
 language: ruby
 rvm:
-- 2.3.1
-before_script: bundle exec rake db:migrate
+  - 2.3.1
+before_script:
+  - gem install bundler -v '>= 2.0.0' -N
+  - bundle exec rake db:migrate
 script: bundle exec rake
 cache:
-- bundler
-notifications:
-  slack:
-    secure: HmWMx++WDNwPvXzSXwIGlLIgxUFaj83Tdk8zCtDAfUvc0HpEl4yXS5TC3Adgdj/JJCarB/DYWfslwQ6HtZzWWcJvX2JvT3ch/PhIAVRntZLq2+ATzahmCr1Dvy9jWTCob+cBzZDa3xqk3tSn+nTFobvhOw0zd19OWrh0W9PA+to=
+  - bundler
